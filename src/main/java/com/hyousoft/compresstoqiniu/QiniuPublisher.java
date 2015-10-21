@@ -161,10 +161,15 @@ public class QiniuPublisher extends Recorder {
 		}
 		logger.println("删除临时文件目录..."+ws +File.separator+"tmp");
 		FileOperation.deleteDirectory(ws +File.separator+"tmp");
-		logger.println("上传导致错误的文件列表如下：");
-		for (String errorPath:errorList) {
-			logger.println(errorPath);
+		if (errorList.isEmpty()) {
+			logger.println("文件全部上传成功 ^_^");
+		}else{
+			logger.println("上传导致错误的文件列表如下：");
+			for (String errorPath:errorList) {
+				logger.println(errorPath);
+			}
 		}
+		
 		
 		return true;
 	}
